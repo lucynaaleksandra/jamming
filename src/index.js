@@ -6,4 +6,4 @@ import App from './components/App/app'
 
 ReactDOM.render(<App />, document.getElementById('root'))
 
-console.log('INDEX: Hello World of Code!')
+//console.log('INDEX: Hello INDEX')
