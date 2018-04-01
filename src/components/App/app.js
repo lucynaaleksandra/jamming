@@ -22,6 +22,7 @@ class App extends React.Component {
     this.updatePlaylistName = this.updatePlaylistName.bind(this)
     this.savePlaylist = this.savePlaylist.bind(this)
     this.search = this.search.bind(this)
+    Spotify.getAccessToken()
   }
 
   // calls the Spotify.js (util file) to run a call for Spotify API, then sets state
@@ -34,15 +35,17 @@ class App extends React.Component {
 
   // Adds track from Search Results to Playlist
   addTrack(track) {
+    console.log("addTrack", track)
     let tracks = this.state.playlistTracks
+    console.log("tracks", tracks)
     tracks.push(track)
-    this.setState({ playlistTracks: track })
+    this.setState({ playlistTracks: tracks })
   }
 
   // Removes track from Playlist (filter out track id from playlistTracks)
   removeTrack(track) {
-    let tracks = this.state.playlistTracks
-    tracks.filter(current => current.id !== track.id)
+    let tracks = this.state.playlistTracks 
+    tracks = tracks.filter(current => current.id !== track.id)
     this.setState({ playlistTracks: tracks })
   }
 
@@ -54,6 +57,8 @@ class App extends React.Component {
   // saves Playlist name and tracks to user's account
   savePlaylist() {
     let trackURIs = this.state.playlistTracks.map(track => track.uri)
+    Spotify.savePlaylist(this.state.playlistName, trackURIs)
+    this.setState({ playlistName: "New Playlist", searchResults: [] })
   }
 
   render() {
@@ -63,11 +68,14 @@ class App extends React.Component {
         <div className="App">
           <SearchBar onSearch={this.search} />
           <div className="App-playlist">
-            <SearchResults searchResults={this.state.searchResults}
-              onAdd={this.addTracks} />
+            <SearchResults 
+              searchResults={this.state.searchResults}
+              onAdd={this.addTrack}
+              onRemove={this.removeTrack} />
             <Playlist
               playlistName={this.state.playlistName}
               tracks={this.state.playlistTracks}
+              onAdd={this.addTrack}
               onRemove={this.removeTrack}
               onNameChange={this.onNameChange}
               onSave={this.savePlaylist} />
@@ -79,4 +87,3 @@ class App extends React.Component {
 }
 export default App
 
-//console.log('APP: Hello APP') 

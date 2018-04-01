@@ -2,6 +2,11 @@
   display: flex;
   align-items: center;
   border-bottom: 1px solid rgba(256, 256, 256, 0.8);
+  flex: 1 0 auto;
+  cursor: pointer; 
+  transition: color .25s;
+  font-size: 1.05rem;
+  padding: .5rem;
 }
 
 .Track-action {
@@ -32,3 +37,7 @@
   font-weight: 300;
   color: rgba(256, 256, 256, 0.8);
 }
+
+// .Track button {
+//   background-color: #010c3f;
+// }
