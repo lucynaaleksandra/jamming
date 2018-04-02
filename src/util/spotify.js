@@ -47,9 +47,11 @@ let Spotify = {
       })
   },
 
-  // gets user's IS from Spotify, creates a new playlist on user's account & adds tracks to that playlist
+  // gets user's ID from Spotify, creates a new playlist on user's account & adds tracks to that playlist
   savePlaylist(name, trackUri) {
-    if (!name || !trackUri) return
+    if (!name || !trackUri) {
+      return
+    }
 
     let accessToken = Spotify.getAccessToken();
     let headers = { Authorization: `Bearer ${accessToken}` };
@@ -63,17 +65,18 @@ let Spotify = {
       .then(jsonResponse => userId = jsonResponse.id)
 
     // add playlist to user's account
-    return fetch('https://api.spotify.com/v1/users/{user_id}/playlists', {
+    return fetch('https://api.spotify.com/v1/users/${userId}/playlists', {
       headers: headers,
       method: POST,
       body: JSON.stringify({ name: playlistName })
     })
       .then(response => response.json())
       .then(jsonResponse => {
-        const playlistID = jsonResponse.id
+        const playlistId = jsonResponse.id
       })
+
     // add tracks to new playlist
-    return fetch('https://api.spotify.com/v1/users/{user_id}/playlists/{playlist_id}/tracks', {
+    return fetch('https://api.spotify.com/v1/users/${userId}/playlists/${playlistID}/tracks', {
       headers: headers,
       method: POST,
       body: JSON.stringify({ uris: trackUri })
