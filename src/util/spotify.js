@@ -1,4 +1,4 @@
-const CLIENT_ID = '6b851ed47c0443d4ab13059df15a094c';
+const CLIENT_ID = 'CLIENT_ID';
 const REDIRECT_URI = 'http://localhost:8080/';
 let accessToken = undefined;
 let expiresIn = undefined;
