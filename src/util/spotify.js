@@ -1,4 +1,4 @@
-const CLIENT_ID = 'CLIENT_ID';
+const CLIENT_ID = '6b851ed47c0443d4ab13059df15a094c';
 const REDIRECT_URI = 'http://localhost:8080/';
 let accessToken = undefined;
 let expiresIn = undefined;
@@ -58,14 +58,14 @@ let Spotify = {
     let userId = undefined;
 
     // return user's ID from Spotify API
-    return fetch('https://api.spotify.com/v1/me', {
+    return fetch(`https://api.spotify.com/v1/me`, {
       headers: headers
     })
       .then(response => response.json())
       .then(jsonResponse => userId = jsonResponse.id)
 
     // add playlist to user's account
-    return fetch('https://api.spotify.com/v1/users/${userId}/playlists', {
+    return fetch(`https://api.spotify.com/v1/users/${userId}/playlists`, {
       headers: headers,
       method: POST,
       body: JSON.stringify({ name: playlistName })
@@ -76,7 +76,7 @@ let Spotify = {
       })
 
     // add tracks to new playlist
-    return fetch('https://api.spotify.com/v1/users/${userId}/playlists/${playlistID}/tracks', {
+    return fetch(`https://api.spotify.com/v1/users/${userId}/playlists/${playlistID}/tracks`, {
       headers: headers,
       method: POST,
       body: JSON.stringify({ uris: trackUri })
