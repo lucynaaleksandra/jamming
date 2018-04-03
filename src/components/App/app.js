@@ -51,14 +51,14 @@ class App extends React.Component {
 
   // updates the name of the Playlist
   updatePlaylistName(name) {
-    this.setState({ playlistName: input })
+    this.setState({ playlistName: name })
   }
 
   // saves Playlist name and tracks to user's account
   savePlaylist() {
     let trackURIs = this.state.playlistTracks.map(track => track.uri)
     Spotify.savePlaylist(this.state.playlistName, trackURIs)
-    this.setState({ playlistName: "New Playlist", searchResults: [] })
+    this.setState({ playlistName: "New Playlist", playlistTracks: [] })
   }
 
   render() {
@@ -77,7 +77,7 @@ class App extends React.Component {
               tracks={this.state.playlistTracks}
               onAdd={this.addTrack}
               onRemove={this.removeTrack}
-              onNameChange={this.onNameChange}
+              onNameChange={this.updatePlaylistName}
               onSave={this.savePlaylist} />
           </div>
         </div>
@@ -86,4 +86,3 @@ class App extends React.Component {
   }
 }
 export default App
-

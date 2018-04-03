@@ -1,9 +1,13 @@
 import React from 'react'
-
+import PropTypes from 'prop-types'
 import './playlist.scss'
 import TrackList from '../../components/TrackList/trackList'
 
 class Playlist extends React.Component {
+  static propTypes = {
+    onNameChange: PropTypes.func.isRequired,
+  }
+
   constructor(props) {
     super(props)
 
@@ -18,7 +22,7 @@ class Playlist extends React.Component {
   render() {
     return (
       <div className="Playlist">
-        <input defaultValue={'New Playlist'} /> 
+        <input value={this.props.playlistName} onChange={this.handleNameChange} /> 
         <TrackList
           onRemove={this.props.onRemove}
           tracks={this.props.tracks} />
