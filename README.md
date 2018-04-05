@@ -32,3 +32,9 @@ To build the project for deployment enter the command into your terminal.
 ```bash
 npm run build
 ```
+
+## Deploy to surge
+To build & deploy to surge account.  Requires a configured surge account.
+```bash
+npm run deploy
+```
