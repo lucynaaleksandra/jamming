@@ -1,5 +1,5 @@
-const CLIENT_ID = '6b851ed47c0443d4ab13059df15a094c';
-const REDIRECT_URI = 'http://lucynaaleksandra.surge.sh/';
+const CLIENT_ID = process.env.CLIENT_ID;
+const REDIRECT_URI = 'http://localhost:8080/';
 let accessToken = undefined;
 let expiresIn = undefined;
 let spotifyURL = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=token&scope=playlist-modify-public&redirect_uri=${REDIRECT_URI}`;
