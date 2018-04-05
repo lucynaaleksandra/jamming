@@ -5,6 +5,7 @@
   "main": "src/index.js",
   "scripts": {
     "build": "source ./.env; node_modules/.bin/webpack",
+    "deploy": "npm run build; surge dist",
     "dev": "npm run start",
     "postinstall": "npm run start",
     "start": "source ./.env; node_modules/.bin/webpack-dev-server"
