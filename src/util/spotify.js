@@ -1,5 +1,5 @@
 const CLIENT_ID = process.env.CLIENT_ID;
-const REDIRECT_URI = 'http://localhost:8080';
+const REDIRECT_URI = 'http://localhost:8080/';
 let accessToken = undefined;
 let expiresIn = undefined;
 let spotifyURL = `https://accounts.spotify.com/authorize?client_id=${CLIENT_ID}&response_type=token&scope=playlist-modify-public&redirect_uri=${REDIRECT_URI}`;
