@@ -1,6 +1,7 @@
 const path = require("path"),
   mapValues = require("lodash/mapValues"),
   mapKeys = require("lodash/mapKeys"),
+  reduce = require("lodash/reduce"),
   map = require("lodash/map"),
   pickBy = require("lodash/pickBy"),
   isArray = require("lodash/isArray"),
@@ -58,6 +59,7 @@ module.exports = {
     ]
   },
   plugins: [
+    new webpack.DefinePlugin(pkg.webpack.env),
     new CleanWebpackPlugin(pkg.webpack.output.path),
     new webpack.HotModuleReplacementPlugin(),
     new ExtractTextPlugin({
@@ -93,6 +95,7 @@ module.exports = {
 function init(pkg) {
   pkg.webpack.html = html(pkg.webpack.entry)
   pkg.webpack.entry = entry(pkg.webpack.entry)
+  pkg.webpack.env = env(pkg.webpack.env)
   pkg.webpack.output = output(pkg.webpack.output)
   pkg.webpack.devServer = devServer(pkg.webpack.devServer)
 }
@@ -104,6 +107,18 @@ function entry(entries) {
   })
   entries = mapValues(entries, value => path.resolve(cwd, value))
   return mapKeys(entries, (value, key) => key.replace(".js", ""))
+}
+
+function env(env = {}) {
+  return reduce(env, (r, value, key) => {
+    if ("$" == value.charAt(0))
+      r[`process.env.${key}`] = JSON.stringify(process.env[value.substring(1)])
+    else
+      r[`process.env.${key}`] = JSON.stringify(value)
+    return r
+  }, {
+      'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
+    })
 }
 
 function output(output) {
