@@ -4,11 +4,11 @@
   "description": "",
   "main": "src/index.js",
   "scripts": {
-    "build": "./config.sh || node_modules/.bin/webpack",
+    "build": "source ./.env; node_modules/.bin/webpack",
     "deploy": "npm run build || surge dist",
     "dev": "npm run start",
     "postinstall": "npm run start",
-    "start": "./config.sh || node_modules/.bin/webpack-dev-server"
+    "start": "source ./.env; node_modules/.bin/webpack-dev-server"
   },
   "webpack": {
     "env": {

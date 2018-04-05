@@ -13,7 +13,7 @@ const path = require("path"),
   CopyWebpackPlugin = require('copy-webpack-plugin'),
   ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin"),
   webpack = require("webpack")
-
+console.log("process.env.CLIENT_ID", process.env.CLIENT_ID)
 const cwd = process.cwd(),
   pkg = require(cwd + "/package.json"),
   defaultOutputPath = "dist"
@@ -115,6 +115,7 @@ function env(env = {}) {
       r[`process.env.${key}`] = JSON.stringify(process.env[value.substring(1)])
     else
       r[`process.env.${key}`] = JSON.stringify(value)
+    console.log("hmm", r)
     return r
   }, {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
