@@ -1,4 +1,4 @@
-const CLIENT_ID = 'CLIENT_ID';
+const CLIENT_ID = process.env.CLIENT_ID;
 const REDIRECT_URI = 'http://localhost:8080/';
 let accessToken = undefined;
 let expiresIn = undefined;
