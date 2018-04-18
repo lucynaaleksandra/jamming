@@ -13,7 +13,6 @@ const path = require("path"),
   CopyWebpackPlugin = require('copy-webpack-plugin'),
   ScriptExtHtmlWebpackPlugin = require("script-ext-html-webpack-plugin"),
   webpack = require("webpack")
-
 const cwd = process.cwd(),
   pkg = require(cwd + "/package.json"),
   defaultOutputPath = "dist"
