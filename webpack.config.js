@@ -115,7 +115,7 @@ function env(env = {}) {
       r[`process.env.${key}`] = JSON.stringify(process.env[value.substring(1)])
     else
       r[`process.env.${key}`] = JSON.stringify(value)
-    return r
+      return r
   }, {
       'process.env.NODE_ENV': JSON.stringify(process.env.NODE_ENV || 'development'),
     })
