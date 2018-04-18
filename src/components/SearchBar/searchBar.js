@@ -9,6 +9,7 @@ class SearchBar extends React.Component {
     this.delayedSearch = debounce(query => this.props.onSearch(query), 750)
     this.handleTermChange = this.handleTermChange.bind(this)
     this.onClickSearch = this.onClickSearch.bind(this)
+    this.onClickReset = this.onClickReset.bind(this)
   }
 
   handleTermChange(event) {
@@ -22,13 +23,17 @@ class SearchBar extends React.Component {
     this.props.onSearch(this.state.query)
   }
 
+  onClickReset() {
+    this.props.onReset(this.state.query)
+  }
+
   render() {
     return (
       <div className="SearchBar">
         <input 
           placeholder="Enter A Song, Album, or Artist"
-          onChange={this.handleTermChange} />
-        <a onClick={this.onClickSearch}>SEARCH</a>
+          onChange={this.handleTermChange} /> 
+        <a onClick={this.onClickSearch}>SEARCH</a> 
       </div> 
     )
   }
