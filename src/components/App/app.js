@@ -33,11 +33,15 @@ class App extends React.Component {
       )
   }
 
+  reset() {
+
+  }
+
   // Adds track from Search Results to Playlist
   addTrack(track) {
-    console.log("addTrack", track)
+    // console.log("addTrack", track)
     let tracks = this.state.playlistTracks
-    console.log("tracks", tracks)
+    // console.log("tracks", tracks)
     tracks.push(track)
     this.setState({ playlistTracks: tracks })
   }
@@ -49,7 +53,8 @@ class App extends React.Component {
     this.setState({ playlistTracks: tracks })
   }
 
-  // updates the name of the Playlist
+  // updates the name of the Playlist 
+  
   updatePlaylistName(name) {
     this.setState({ playlistName: name })
   }
