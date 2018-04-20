@@ -3,11 +3,6 @@ import './searchResults.scss'
 import TrackList from '../../components/TrackList/trackList'
 
 class SearchResults extends React.Component {
-
-  resetResults() {
-    
-  }
-
   render() {
     return (
       <div className="SearchResults">
