@@ -26,16 +26,19 @@
   flex-direction: column;
   justify-content: center;
   height: 72px;
+  word-wrap: break-word;
 }
 
 .Track-information h3 {
   margin-bottom: .22rem;
+  word-wrap: break-word;
 }
 
 .Track-information p {
   font-size: .83rem;
   font-weight: 300;
   color: rgba(256, 256, 256, 0.8);
+  word-wrap: break-word;
 }
 
 // .Track button {

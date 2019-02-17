@@ -31,8 +31,8 @@
   "author": "lucy@lucynaaleksandra.com",
   "license": "MIT",
   "dependencies": {
-    "babel-core": "^6.26.0",
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",
     "babel-polyfill": "^6.26.0",
     "babel-preset-env": "^1.6.0",
@@ -46,7 +46,7 @@
     "extract-text-webpack-plugin": "^3.0.1",
     "html-webpack-plugin": "^2.30.1",
     "lodash": "^4.17.4",
-    "node-sass": "^4.5.3",
+    "node-sass": "^4.11.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
     "react-router-dom": "^4.2.2",
